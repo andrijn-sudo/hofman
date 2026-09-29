@@ -1,0 +1,27 @@
+couplecheck.quest {
+    # Reverse proxy traffic to the React Router application container
+    reverse_proxy app:3000
+
+    # Modern compression for fast load times
+    encode gzip zstd
+
+    # Production security headers
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
+    # Cache static Vite assets with long-term immutable caching
+    @static {
+        path /assets/* /favicon.ico
+    }
+    header @static Cache-Control "public, max-age=31536000, immutable"
+
+    # Structured access logging
+    log {
+        output stdout
+        format console
+    }
+}

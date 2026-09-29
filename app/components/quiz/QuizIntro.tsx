@@ -8,6 +8,7 @@ import {
   ChevronDown,
   Award,
 } from 'lucide-react';
+import { InstagramLink } from './InstIcon';
 
 interface QuizIntroProps {
   totalQuestions: number;
@@ -220,6 +221,12 @@ export const QuizIntro: React.FC<QuizIntroProps> = ({
         <p className="text-[11px] text-center text-slate-500 dark:text-slate-400 pt-1">
           Відповідайте щиро — результати бачите лише ви на цьому пристрої.
         </p>
+        <div className="flex justify-center pt-1">
+          <InstagramLink
+            url="https://www.instagram.com/fopster.online"
+            style={{ width: 36, height: 36 }}
+          />
+        </div>
       </div>
     </div>
   );
